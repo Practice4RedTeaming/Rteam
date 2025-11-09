@@ -1,0 +1,23 @@
+apiVersion: k8s.keycloak.org/v2alpha1
+kind: Keycloak
+metadata:
+  name: c3-keycloak
+  namespace: keycloak
+spec:
+  instances: 1
+
+  adminUser:
+    secretName: c3-keycloak-admin
+    usernameKey: username
+    passwordKey: password
+
+  storage:
+    type: ephemeral
+
+  hostname:
+    hostname: keycloak.local
+
+  ingress:
+    enabled: true
+    className: nginx
+    hostname: keycloak.local
