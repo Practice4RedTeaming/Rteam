@@ -6,18 +6,18 @@ metadata:
 spec:
   instances: 1
 
-  adminUser:
-    secretName: c3-keycloak-admin
-    usernameKey: username
-    passwordKey: password
+  # Admin credentials used to log in to Keycloak UI
+  bootstrapAdmin:
+    username: admin
+    passwordSecret: c3-keycloak-admin
 
-  storage:
-    type: ephemeral
+  # Ephemeral internal DB (for learning)
+  db:
+    vendor: dev-mem
 
-  hostname:
-    hostname: keycloak.local
-
-  ingress:
-    enabled: true
-    className: nginx
-    hostname: keycloak.local
+  # Configure ingress
+  http:
+    ingress:
+      enabled: true
+      className: nginx
+      hostname: keycloak.local
